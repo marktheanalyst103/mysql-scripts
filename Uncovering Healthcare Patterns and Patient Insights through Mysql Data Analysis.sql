@@ -135,7 +135,7 @@ where
 	medical_condition LIKE '%Diabetes%' -- anything that contains the word 'Diabetes'
 ;
 
-#4.	Count the number of male and female patients in the dataset.
+#4. Count the number of male and female patients in the dataset.
 select COUNT(gender) as unique_female
 from patient_records
 where
@@ -156,7 +156,7 @@ group by admission_type
 ;
 
 ## AGGREGATION & GROUPING
-#6.	Count the number of patients admitted per hospital, ordered by the highest admissions.
+#6. Count the number of patients admitted per hospital, ordered by the highest admissions.
 select
 	hospital, COUNT(*) as total_admission
 from patient_records
@@ -164,14 +164,14 @@ group by hospital
 order by total_admission desc
 ;
 
-#7.	What is the average billing amount for each admission type?
+#7. What is the average billing amount for each admission type?
 select
 	admission_type, ROUND(AVG(billing_amount),2) as avg_bill -- to display only two decimal places
 from patient_records
 group by admission_type
 ;
 
-#8.	Identify the hospital with the highest total billing amount across all admissions.
+#8. Identify the hospital with the highest total billing amount across all admissions.
 select
 	hospital, SUM(billing_amount) as total_bill
 from patient_records
@@ -180,7 +180,7 @@ order by total_bill desc
 limit 1 
 ;
 
-#9.	Retrieve the top 5 most common medical conditions, sorted by the number of patients diagnosed.
+#9. Retrieve the top 5 most common medical conditions, sorted by the number of patients diagnosed.
 select
 	medical_condition, COUNT(*) as patients_diagnosed
 from patient_records
@@ -189,7 +189,7 @@ order by patients_diagnosed desc
 limit 5
 ;
 
-#10.	Which doctor has treated the most patients, and how many have they treated?
+#10. Which doctor has treated the most patients, and how many have they treated?
 select 
 	doctor, COUNT(*) as patients_treated
 from patient_records
@@ -224,7 +224,7 @@ where
 from patient_records
 ;
  
-#14.Find the month and year with the highest number of admissions and the corresponding count. 
+#14. Find the month and year with the highest number of admissions and the corresponding count. 
 select
 	DATE_FORMAT(date_of_admission, '%Y-%M') as admission_month,
     COUNT(*) as admission_count
